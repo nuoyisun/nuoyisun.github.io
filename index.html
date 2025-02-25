@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 | 欢迎访问</title>
+    <!-- Google Ads 脚本 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3656264040400727"
+     crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4ea5d9;
+            --text-color: #333;
+            --light-text: #757575;
+            --light-bg: #f5f7fa;
+            --dark-bg: #2c3e50;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        /* 导航栏 */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 0 5%;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .button {
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .primary-button {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+        
+        .primary-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .hero-shape {
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .hero-shape-2 {
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        /* 关于区域 */
+        .about {
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+        
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: var(--accent-color);
+        }
+        
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .about-image {
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+            display: block;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 服务区域 */
+        .services {
+            padding: 5rem 5%;
+            background-color: var(--light-bg);
+        }
+        
+        .services-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .services-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .service-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* 项目区域 */
+        .projects {
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+        
+        .projects-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .projects-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            display: block;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+            background-color: var(--white);
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .project-category {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* 联系区域 */
+        .contact {
+            padding: 5rem 5%;
+            background-color: var(--light-bg);
+        }
+        
+        .contact-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .form-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 3rem 5%;
+        }
+        
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            text-align: center;
+            color: #aaa;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-inner,
+            .contact-inner {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <nav>
+            <div class="logo">我的个人主页</div>
+            <div class="nav-links">
+                <a href="#home">首页</a>
+                <a href="#about">关于我</a>
+                <a href="#services">服务</a>
+                <a href="#projects">项目</a>
+                <a href="#contact">联系</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>你好，我是<span style="color: #ffcc00;">设计师</span><br>也是<span style="color: #ffcc00;">开发者</span></h1>
+            <p>欢迎来到我的个人网站。我致力于创造令人惊叹的数字体验，通过创新的设计和开发解决方案，帮助客户实现他们的愿景。</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="button primary-button">查看我的作品</a>
+                <a href="#contact" class="button secondary-button">联系我</a>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+        <div class="hero-shape-2"></div>
+    </section>
+    
+    <!-- 关于区域 -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-text">
+                <h2 class="section-title">关于我</h2>
+                <p>你好！我是一位热爱创造的专业人士，拥有设计和开发的双重技能。过去5年里，我一直致力于为客户打造独特而有效的数字产品。</p>
+                <p>我相信设计不仅仅是外观，更是解决问题的工具。每个项目都是一次机会，让我能够通过创新思维来创造既美观又实用的解决方案。</p>
+                <p>在我的职业生涯中，我有幸与各行各业的客户合作，从初创公司到大型企业，帮助他们实现数字转型和提升品牌价值。</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400&q=80" alt="关于我的形象图片">
+            </div>
+        </div>
+    </section>
+    
+    <!-- 服务区域 -->
+    <section class="services" id="services">
+        <div class="services-inner">
+            <div class="services-title">
+                <h2 class="section-title">我的服务</h2>
+                <p>我提供多种专业服务，帮助您的业务在数字世界中脱颖而出</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="service-title">UI/UX设计</h3>
+                    <p>创造直观、美观且用户友好的界面设计，提升用户体验和满意度。我注重细节，确保每个元素都有其目的。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">前端开发</h3>
+                    <p>使用最新的技术栈构建响应式、高性能的网站和应用程序，确保跨设备的兼容性和最佳用户体验。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="service-title">移动应用开发</h3>
+                    <p>开发功能强大、用户友好的移动应用，满足您的业务需求并提供卓越的用户体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 项目区域 -->
+    <section class="projects" id="projects">
+        <div class="projects-inner">
+            <div class="projects-title">
+                <h2 class="section-title">我的项目</h2>
+                <p>这些是我最近完成的一些精选项目</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80" alt="项目1">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">电子商务平台</h3>
+                        <div class="project-category">网页设计 / 开发</div>
+                        <p>为本地零售商开发的现代电子商务平台，提升了在线销售额超过35%。</p>
+                        <a href="#" class="project-link">查看详情</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80" alt="项目2">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">健康追踪应用</h3>
+                        <div class="project-category">移动应用开发</div>
+                        <p>一款帮助用户跟踪日常健康指标和锻炼计划的直观移动应用。</p>
+                        <a href="#" class="project-link">查看详情</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300&q=80" alt="项目3">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">企业品牌重塑</h3>
+                        <div class="project-category">品牌设计 / 网站开发</div>
+                        <p>为一家成长中的科技公司完成品牌重塑和网站重新设计的项目。</p>
+                        <a href="#" class="project-link">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系区域 -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h2 class="section-title">联系我</h2>
+                <p>如果您对我的服务有任何疑问，或者想讨论潜在的合作机会，请随时通过以下方式联系我。</p>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>位置</h3>
+                        <p>中国，北京市</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>邮箱</h3>
+                        <p>sunxu3074@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>电话</h3>
+                        <p>+86 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>发送消息</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">姓名</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">邮箱</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">主题</label>
+                        <input type="text" id="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">消息</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="form-button">发送消息</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-column">
+                <h3 class="footer-title">关于我</h3>
+                <p>我是一名专业的设计师和开发者，致力于创造令人惊叹的数字体验和解决方案。</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">服务</h3>
+                <div class="footer-links">
+                    <a href="#">UI/UX设计</a>
+                    <a href="#">前端开发</a>
+                    <a href="#">移动应用开发</a>
+                    <a href="#">品牌设计</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">快速链接</h3>
+                <div class="footer-links">
+                    <a href="#home">首页</a>
+                    <a href="#about">关于我</a>
+                    <a href="#services">服务</a>
+                    <a href="#projects">项目</a>
+                    <a href="#contact">联系</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 我的个人网站. 保留所有权利.</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 表单提交处理
+        // 表单提交处理
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // 获取表单数据
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+
+        // 这里可以添加表单验证
+        if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+            alert('请填写所有必填字段');
+            return;
+        }
+
+        // 显示提交成功消息
+        alert('消息已发送！我会尽快回复您。');
+        this.reset();
+    });
+
+    // 添加页面加载动画
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+
+    // 添加滚动动画
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .project-card, .about-image').forEach((el) => {
+        observer.observe(el);
+    });
+</script>
+
+<!-- 添加新的样式 -->
+<style>
+    /* 添加到现有的 style 标签中 */
+    
+    /* 页面加载动画 */
+    body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    body.loaded {
+        opacity: 1;
+    }
+    
+    /* 滚动动画 */
+    .service-card, .project-card, .about-image {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .service-card.animate, .project-card.animate, .about-image.animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* 改进的按钮悬停效果 */
+    .button {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .button::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+    
+    .button:hover::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* 改进的卡片悬停效果 */
+    .service-card, .project-card {
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover, .project-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+</style>
